@@ -39,4 +39,3 @@ for key in pr:
     if key in d.keys():
         fo.write("" + d[key] + "=" + ("%f" % pr[key]) + "\n")
 fo.close()
-
