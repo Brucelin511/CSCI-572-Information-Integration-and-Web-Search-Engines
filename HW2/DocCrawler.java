@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package edu.uci.ics.crawler4j.examples.imagecrawler;
+package edu.uci.ics.crawler4j.examples.doccrawler;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -60,7 +60,7 @@ public class ImageCrawler extends WebCrawler {
 		      ".*(\\.(css|js|bmp|gif|jpg|jpe?g|png|tiff?|mid|mp2|mp3|mp4|wav|avi|mov|mpeg|ram|m4v" +
 		      "|rm|smil|wmv|swf|wma|zip|rar|gz|php|iso|ico))$");
 
-	  private static final Pattern imgPatterns = Pattern.compile(".*(\\.(pdf"+"|doc|docx))$");
+	  private static final Pattern docPatterns = Pattern.compile(".*(\\.(pdf"+"|doc|docx))$");
 
   private static File storageFolder;
   private static String[] crawlDomains;
@@ -81,7 +81,7 @@ public class ImageCrawler extends WebCrawler {
       return false;
     }
 
-   if (imgPatterns.matcher(href).matches() ) {
+   if (docPatterns.matcher(href).matches() ) {
       return true;
     }
 
@@ -100,7 +100,7 @@ public class ImageCrawler extends WebCrawler {
     String url_split[]=url.split("/");
     //System.out.println(temp[2]);
     // We are only interested in processing images which are bigger than 10k
-   if (!(url_split[2].contains("marshall") && (imgPatterns.matcher(url).matches()||(page.getParseData() instanceof HtmlParseData)))) {
+   if (!(url_split[2].contains("marshall") && (docPatterns.matcher(url).matches()||(page.getParseData() instanceof HtmlParseData)))) {
       return;
     }
   
