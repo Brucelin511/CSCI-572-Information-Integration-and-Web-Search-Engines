@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package edu.uci.ics.crawler4j.examples.imagecrawler;
+package edu.uci.ics.crawler4j.examples.doccrawler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +44,7 @@ public class ImageCrawlController {
     config.setCrawlStorageFolder(rootFolder);
 
     /*
-     * Since images are binary content, we need to set this parameter to
+     * Since images,docs and pdfs are binary content, we need to set this parameter to
      * true to make sure they are included in the crawl.
      */
     config.setIncludeBinaryContentInCrawling(true);
@@ -63,8 +63,8 @@ public class ImageCrawlController {
       controller.addSeed(domain);
     }
 
-    ImageCrawler.configure(crawlDomains, storageFolder);
+    DocCrawler.configure(crawlDomains, storageFolder);
 
-    controller.start(ImageCrawler.class, numberOfCrawlers);
+    controller.start(DocCrawler.class, numberOfCrawlers);
   }
 }
